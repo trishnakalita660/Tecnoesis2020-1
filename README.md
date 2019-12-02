@@ -88,5 +88,5 @@
 |`modules`|provides service instances. Most singleton instances is created by `double checked synchronized block`|
 |`logging`|This is not setup yet. It should upload errors to server|
 |`ui`|contains the Activities and Fragments . The hierarchy is followed as Application ==> Activities ==> Fragments. An Application is a single entity of the application. But it can have multiple Activities. Each Activity also can have multiple fragments.|
-|`ViewModels`|Each Activity and Fragment has its own view model. View model connects data to view. Remember the FragmentViewModel will live as long as the Fragment but its containing Activity will persist. So you have to decide wisely which Viewmodel to use and when|
+|`ViewModels`|Each Activity and Fragment has its own view model. View model connects data to view. Remember the FragmentViewModel will live as long as the Fragment but its containing Activity will persist. So you have to decide wisely which Viewmodel to use and when. Also note that it is possible for an Application can only use its `own` viewmodel (not implemented here) and not others. An Activity can access its `own` view model and `appViewModel`. A Fragment View Model can access all three view models. This is because of the heirarchy stated above |
 |`config`|contains configuration keys|
