@@ -25,7 +25,7 @@ There will be 5 fragments for the app - `Home`, `Events`,`Notification`, `Schedu
 
 
 
-
+Designers : You are free to decide how the elements will look in the app.
 
 
 **required libraries :** 
