@@ -9,9 +9,12 @@ There will be 5 fragments for the app - `Home`, `Events`,`Notification`, `Schedu
 |name|description|
 |--|--|
 |`Home` | This will highlight the keynote speakers, headliners and sponsers . It will have a recycler view with a cardview . Card will contain the poster for that event and a small description at the bottom . |
-|`Events`|It will have a staggered recycler view . This recyclerview will have different modules for tecnoesis, eg - NITS HACKS, Robotron, Spark etc . On clicking this cards it will go to another screen details the details about that modules. Eg - For the Robotron module, if the user clicks it it will go to an screen and show the different events under this module. On clicking those events it will show details about that particular event, photo, description, prize money. 
+|`Events`|It will have a staggered recycler view . This recyclerview will have different modules for tecnoesis, eg - NITS HACKS, Robotron, Spark etc . On clicking this cards it will go to another screen details the details about that modules. Eg - For the Robotron module, if the user clicks it it will go to an screen and show the different events under this module. On clicking those events it will show details about that particular event, photo, description, prize money. |
+
 ![enter image description here](https://lh3.googleusercontent.com/2Tcf-YxwLnS__t40_Z__mNF6MBHeBv-YM0G2qBL_TSEWnOSG6I2H7t08SG5Jg5Lle86lYAjVLvIG)
+
 *The events section of the each module may be displayed as a stagerred list.*
+
 |||
 |--|--|
 |`Notifications`  |One  of the key features of the app . It will have a recyclerview with cards. A card will contain name of the sender and the message body . |
