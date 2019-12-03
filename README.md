@@ -1,6 +1,8 @@
 ### Android Application for Tecnoesis 2020
 
 
+## The Design
+
 There will be 5 fragments for the app - `Home`, `Events`,`Notification`, `Schedule`,`About`. 
 
 
