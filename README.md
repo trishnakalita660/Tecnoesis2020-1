@@ -35,6 +35,7 @@
 |-|-|
 |TextView in MainActivty|act_main_tv_headline|
 |Button in MainActivty|act_main_btn_submit|
+|TextView in HomeFragment|frag_home_tv_headline|
 
 
 
