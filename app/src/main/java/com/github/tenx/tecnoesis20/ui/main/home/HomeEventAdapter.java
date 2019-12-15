@@ -54,6 +54,7 @@ public class HomeEventAdapter extends RecyclerView.Adapter<HomeEventAdapter.Home
         holder.expandView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if(holder.expandableView.getVisibility() == View.GONE ){
                     TransitionManager.beginDelayedTransition(holder.eventCard,new AutoTransition());
                     holder.expandableView.setVisibility(View.VISIBLE);
