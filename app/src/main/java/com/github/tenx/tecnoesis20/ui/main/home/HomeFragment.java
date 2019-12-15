@@ -1,6 +1,5 @@
 package com.github.tenx.tecnoesis20.ui.main.home;
 
-
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Context;
@@ -24,7 +23,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 
 public class HomeFragment extends Fragment {
 //    google fragment lifecycle or https://developer.android.com/guide/components/fragments if you are unsure about how to use fragment lifecycle
@@ -64,7 +62,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
 
 //        @TODO how to call view model demo
 
