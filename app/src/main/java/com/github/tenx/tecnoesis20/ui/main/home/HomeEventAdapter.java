@@ -45,12 +45,16 @@ public class HomeEventAdapter extends RecyclerView.Adapter<HomeEventAdapter.Home
 
     @Override
     public void onBindViewHolder(@NonNull HomeEventViewHolder holder, int position) {
+        //To set image from imageUrl to the holder instance
         Glide.with(mContext)
         .asBitmap()
         .load(mImageUrl.get(position))
         .into(holder.posterImageView);
+
         holder.titleTextView.setText(mTitleName.get(position));
+
         holder.descriptionTextView.setText(mDate.get(position));
+
         holder.expandView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
