@@ -1,7 +1,5 @@
 package com.github.tenx.tecnoesis20.modules;
 
-
-
 import com.github.tenx.tecnoesis20.Config;
 
 import retrofit2.Retrofit;
@@ -25,8 +23,5 @@ public class RetrofitProvider {
             }
         }
         return instance;
-
     }
-
-
 }

@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        this is neccesary bind call for BindView decorators
+//        this is necessary bind call for BindView decorators
         ButterKnife.bind(this);
 
 //        set callback as implemented interface

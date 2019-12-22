@@ -59,6 +59,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ImageViewHOlde
     }
 
 
+
+
+
+
+
     public  class ImageViewHOlder extends RecyclerView.ViewHolder{
 
         @BindView(R.id.home_image)
