@@ -51,7 +51,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/card_home_img_poster"
                 />
 
-            <ImageButton
+            <Button
                 android:id="@+id/card_home_btn_arrDown"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
