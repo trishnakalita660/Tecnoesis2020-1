@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
     @BindView(R.id.iv_home_banner_image)
     ImageView imageView;
 
-List<events> events;
+    List<events> events;
     @BindView(R.id.recycler_home_events)
     RecyclerView recyclerView;
 

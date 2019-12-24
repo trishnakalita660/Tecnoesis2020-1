@@ -49,12 +49,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ImageViewHOlde
         return hlist.size();
     }
 
-
-
-
-
-
-
     public  class ImageViewHOlder extends RecyclerView.ViewHolder{
 
         @BindView(R.id.iv_home_event_image)
