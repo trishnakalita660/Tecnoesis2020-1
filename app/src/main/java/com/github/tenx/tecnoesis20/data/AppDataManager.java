@@ -12,10 +12,8 @@ import com.github.tenx.tecnoesis20.data.rest.events.AppEventHelper;
 import java.util.ArrayList;
 
 import retrofit2.Call;
-import retrofit2.Response;
 
 public class AppDataManager implements  AppDataManagerHelper{
-
 
     private Context context;
     private AppEventHelper eventHelper;
@@ -35,8 +33,7 @@ public class AppDataManager implements  AppDataManagerHelper{
     }
 
     @Override
-    public Call<ArrayList<AboutSponsorResponse>> getSponsors() { return sponsorHelper.getSponsors();
-    }
+    public Call<ArrayList<AboutSponsorResponse>> getSponsors() { return sponsorHelper.getSponsors(); }
 
     @Override
     public Call<ArrayList<AboutTeamResponse>> getTeams() {

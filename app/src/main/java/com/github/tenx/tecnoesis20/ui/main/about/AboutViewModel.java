@@ -23,34 +23,34 @@ public class AboutViewModel extends AndroidViewModel implements AboutViewModelHe
 
     public AboutViewModel(@NonNull Application application) {
         super(application);
-        appDataManager = ((MyApplication) application).getDataManager();
+//        appDataManager = ((MyApplication) application).getDataManager();
     }
 
-    @Override
-    public LiveData<ArrayList<AboutSponsorResponse>> getSponsors() {
-        if(sponsorsList == null){
-            sponsorsList = new MutableLiveData<>();
-        }
-        return  sponsorsList;
-    }
-
-    @Override
-    public LiveData<ArrayList<AboutTeamResponse>> getTeams() {
-        if(teamsList == null){
-            teamsList = new MutableLiveData<>();
-        }
-        return  teamsList;
-    }
-
-    @Override
-    public void loadSponsors() {
-        if(sponsorsList == null){
-            sponsorsList = new MutableLiveData<>();
-        }
-    }
-
-    @Override
-    public void loadTeams() {
-
-    }
+//    @Override
+//    public LiveData<ArrayList<AboutSponsorResponse>> getSponsors() {
+//        if(sponsorsList == null){
+//            sponsorsList = new MutableLiveData<>();
+//        }
+//        return  sponsorsList;
+//    }
+//
+//    @Override
+//    public LiveData<ArrayList<AboutTeamResponse>> getTeams() {
+//        if(teamsList == null){
+//            teamsList = new MutableLiveData<>();
+//        }
+//        return  teamsList;
+//    }
+//
+//    @Override
+//    public void loadSponsors() {
+//        if(sponsorsList == null){
+//            sponsorsList = new MutableLiveData<>();
+//        }
+//    }
+//
+//    @Override
+//    public void loadTeams() {
+//
+//    }
 }

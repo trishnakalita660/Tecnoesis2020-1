@@ -7,9 +7,9 @@ import com.github.tenx.tecnoesis20.data.models.AboutTeamResponse;
 import java.util.ArrayList;
 
 public interface AboutViewModelHelper {
-    LiveData<ArrayList<AboutSponsorResponse>> getSponsors();
-    LiveData<ArrayList<AboutTeamResponse>> getTeams();
-
-    void loadSponsors();
-    void loadTeams();
+//    LiveData<ArrayList<AboutSponsorResponse>> getSponsors();
+//    LiveData<ArrayList<AboutTeamResponse>> getTeams();
+//
+//    void loadSponsors();
+//    void loadTeams();
 }
