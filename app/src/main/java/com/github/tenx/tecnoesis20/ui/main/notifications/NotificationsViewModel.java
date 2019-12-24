@@ -14,7 +14,7 @@ public class NotificationsViewModel extends ViewModel {
 
     public List<NotificationBody> getNotifications(){
         List<NotificationBody> list = new ArrayList<>();
-        list.add(new NotificationBody("Jhon 1" , "My awesome title" , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem.", "https://i.pravatar.cc/301"));
+        list.add(new NotificationBody("Jhon 1  : Organizer @Robotron" , "My awesome title" , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem.", "https://i.pravatar.cc/301"));
         list.add(new NotificationBody("Jhon 1" , "My awesome title" , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem.", "https://i.pravatar.cc/300"));
         list.add(new NotificationBody("Jhon 1" , "My awesome title" , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem.", "https://i.pravatar.cc/302"));
         list.add(new NotificationBody("Jhon 1" , "My awesome title" , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem.", "https://i.pravatar.cc/303"));

@@ -106,8 +106,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 colorID = R.color.nav_schedule;
                 break;
             case R.id.nav_about:
-                frag = new NotificationsFragment();
+                frag = new AboutFragment();
                 colorID = R.color.nav_about;
+                break;
+                case R.id.nav_notifications:
+                frag = new NotificationsFragment();
+                colorID = R.color.nav_notifications;
                 break;
                 default:
                     return  false;
