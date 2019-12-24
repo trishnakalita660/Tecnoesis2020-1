@@ -1,27 +1,18 @@
 package com.github.tenx.tecnoesis20.ui.main.home;
 
 import android.content.Context;
-import android.content.Intent;
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.github.tenx.tecnoesis20.R;
-import com.github.tenx.tecnoesis20.ui.main.events.EventsFragment;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -40,7 +31,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ImageViewHOlde
     @NonNull
     @Override
     public ImageViewHOlder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_home,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_home_events,parent,false);
         return new ImageViewHOlder(view);
     }
 
@@ -66,11 +57,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ImageViewHOlde
 
     public  class ImageViewHOlder extends RecyclerView.ViewHolder{
 
-        @BindView(R.id.home_image)
+        @BindView(R.id.iv_home_event_image)
         ImageView imageView;
-        @BindView(R.id.Modules)
+        @BindView(R.id.tv_home_module_title)
         TextView textView;
-        @BindView(R.id.Description)
+        @BindView(R.id.tv_home_description)
         TextView textView2;
 
         public ImageViewHOlder(@NonNull View itemView) {

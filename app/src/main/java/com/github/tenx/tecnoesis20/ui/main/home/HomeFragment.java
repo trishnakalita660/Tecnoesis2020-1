@@ -8,7 +8,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 
 import com.github.tenx.tecnoesis20.R;
@@ -33,11 +31,11 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel mViewModel;
 
-    @BindView(R.id.topImage)
+    @BindView(R.id.iv_home_banner_image)
     ImageView imageView;
 
 List<events> events;
-    @BindView(R.id.rv)
+    @BindView(R.id.recycler_home_events)
     RecyclerView recyclerView;
 
 
