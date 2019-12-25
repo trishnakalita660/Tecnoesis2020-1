@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sky">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        app:menu="@menu/menu_toolbar"
+        app:title="Tecnoesis 2020"
+        android:padding="5dp"
+        app:titleTextColor="@color/white"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/frag_events_tv_modulename"
+        android:padding="3dp"
+        android:layout_below="@+id/toolbar"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="10dp"
+        android:text="MODULE_NAME"
+        android:textAlignment="center"
+        android:textColor="@color/md_purple_50"
+        android:textSize="30dp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/frag_events_tv_shortdescription"
+        android:layout_below="@+id/frag_events_tv_modulename"
+        android:fontFamily="casual"
+        android:padding="3dp"
+        android:layout_marginTop="10dp"
+        android:text="Some detail on module "
+        android:textAlignment="center"
+        android:textColor="#C995A7"
+        android:textSize="17dp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/frag_events_tv_shortdescription"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/module_list"
+        >
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</RelativeLayout>

@@ -27,7 +27,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ImageViewH
     @NonNull
     @Override
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(mContext).inflate(R.layout.listitem_events_list,parent,false);
+        View view= LayoutInflater.from(mContext).inflate(R.layout.listitem_events_module,parent,false);
         return new ImageViewHolder(view);
 
     }
@@ -35,7 +35,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ImageViewH
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position)
     {
-        holder.event_image.setImageResource(elist.get(position).getImage());
+        holder.module_image.setImageResource(elist.get(position).getImage());
 
     }
 
@@ -48,11 +48,11 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ImageViewH
 
     public  static class ImageViewHolder extends RecyclerView.ViewHolder
     {
-        ImageView event_image;
+        ImageView module_image;
         public  ImageViewHolder(@NonNull View itemView)
         {
             super(itemView);
-            event_image=itemView.findViewById(R.id.image);
+            module_image=itemView.findViewById(R.id.module_image);
             ButterKnife.bind(this,itemView);
         }
     }
