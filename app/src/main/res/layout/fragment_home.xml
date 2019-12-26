@@ -8,8 +8,14 @@
     android:tint="#6F0C0000"
     android:scrollbars="vertical"
     tools:context=".ui.main.home.HomeFragment"
-
     >
+
+
+    <RelativeLayout
+        android:id="@+id/rel1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/iv_home_banner_image"
             android:layout_width="match_parent"
@@ -17,12 +23,58 @@
             android:padding="@dimen/margin_padding_size_small"
             android:scaleType="fitXY"
             android:src="@drawable/tecnoesis" />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_home_events"
+
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/slider_home_events"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/iv_home_banner_image"
+
+            android:elevation="20dp"
+
+            app:sliderAnimationDuration="500"
+
+            app:sliderAutoCycleDirection="back_and_forth"
+            app:sliderAutoCycleEnabled="true"
+            app:sliderCircularHandlerEnabled="true"
+            app:sliderIndicatorAnimationDuration="600"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:sliderIndicatorMargin="15dp"
+            app:sliderIndicatorOrientation="horizontal"
+            app:sliderIndicatorPadding="3dp"
+            app:sliderIndicatorRadius="2dp"
+            app:sliderIndicatorSelectedColor="#5A5A5A"
+            app:sliderIndicatorUnselectedColor="#FFF"
+            app:sliderScrollTimeInSec="1"
+            app:sliderStartAutoCycle="true"
+            />
+
+    </RelativeLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_below="@id/iv_home_banner_image"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/rel1">
 
 
+
+        <RelativeLayout
+            android:id="@+id/relinside"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_home_events"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 </RelativeLayout>
+
+
+
+
 
