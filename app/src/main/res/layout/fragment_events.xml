@@ -6,9 +6,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.main.home.HomeFragment"
     android:background="@drawable/sky">
-    <GridView
-        android:id="@+id/modules_grid"
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/recycler_events_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </GridView>
+        android:layout_height="match_parent"
+        tools:listitem="@layout/listitem_module_item"
+        >
+    </androidx.recyclerview.widget.RecyclerView>
+
 </RelativeLayout>

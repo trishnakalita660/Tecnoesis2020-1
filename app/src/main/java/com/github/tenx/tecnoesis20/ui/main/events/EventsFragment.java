@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.tenx.tecnoesis20.R;
 
@@ -19,8 +21,8 @@ import butterknife.ButterKnife;
 
 public class EventsFragment extends Fragment {
 
-    @BindView(R.id.modules_grid)
-    GridView modulesGrid;
+    @BindView(R.id.recycler_events_list)
+    RecyclerView recyclerView;
 
 
     private EventsViewModel mViewModel;
@@ -31,7 +33,7 @@ public class EventsFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View parent = inflater.inflate(R.layout.fragment_events, container, false);
         ButterKnife.bind(this, parent);
-        initModuleGrid(getContext());
+        initModuleRecycler(getContext());
 
         return parent;
 
@@ -45,10 +47,11 @@ public class EventsFragment extends Fragment {
     }
 
 
-    private void initModuleGrid(Context context){
-        ModuleGridAdapter adapter = new ModuleGridAdapter(context);
-        modulesGrid.setNumColumns(2);
-        modulesGrid.setAdapter(adapter);
+    private void initModuleRecycler(Context context){
+        ModuleRecyclerAdapter adapter = new ModuleRecyclerAdapter(context);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(adapter);
+
     }
 
 }

@@ -17,55 +17,49 @@
         >
 
 
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/civ_notificationitem_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="19dp"
-            android:src="@mipmap/ic_launcher"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
+        <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/iv_event_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:layout_marginLeft="@dimen/margin_padding_size_medium"
+            android:src="@drawable/sky"
+            android:layout_marginTop="@dimen/margin_padding_size_small"
+            android:layout_marginBottom="@dimen/margin_padding_size_small"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:paddingLeft="20dp">
+            android:layout_marginTop="@dimen/margin_padding_size_small"
+            android:paddingLeft="@dimen/margin_padding_size_medium">
             <TextView
-                android:id="@+id/tv_notificationitem_sender_name"
+                android:id="@+id/tv_event_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/md_green_300"
+                android:textColor="@color/md_purple_800"
                 android:textSize="@dimen/text_size_medium"
                 android:text="Jhonny Dep"
                 android:textStyle="bold"
                 />
 
             <TextView
-                android:id="@+id/tv_notificationitem_date"
+                android:id="@+id/tv_event_date_loc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_micro"
-                android:text="12:30Pm , 1st Feb"
+                android:text="23rd October @Auditorium"
                 />
-
-
             <TextView
-                android:id="@+id/tv_notificationitem_subject"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/md_black_1000"
-                android:textSize="@dimen/text_size_medium"
-                android:text="Event reschedule!" />
-            <TextView
-                android:id="@+id/tv_notificationitem_message"
+                android:id="@+id/tv_event_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:textSize="@dimen/text_size_small"
+                android:maxLines="5"
+                android:ellipsize="end"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem." />
-
 
         </LinearLayout>
 
