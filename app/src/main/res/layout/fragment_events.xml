@@ -3,13 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.home.HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.main.home.HomeFragment"
+    android:background="@drawable/sky">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textSize="30dp"
-        android:text="Events Fragment" />
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        app:menu="@menu/menu_toolbar"
+        app:title="Tecnoesis 2020"
+        android:padding="5dp"
+        app:titleTextColor="@color/md_red_50"
+        />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listitem_events_list"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:scrollbars="vertical" />
 </RelativeLayout>
