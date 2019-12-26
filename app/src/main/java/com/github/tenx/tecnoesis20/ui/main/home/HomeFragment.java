@@ -3,6 +3,7 @@ package com.github.tenx.tecnoesis20.ui.main.home;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,9 @@ import android.widget.ImageView;
 
 import com.github.tenx.tecnoesis20.R;
 import com.github.tenx.tecnoesis20.data.models.EventResponse;
+import com.smarteist.autoimageslider.IndicatorAnimations;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +38,14 @@ public class HomeFragment extends Fragment {
     @BindView(R.id.iv_home_banner_image)
     ImageView imageView;
 
-    List<events> events;
+
+ArrayList<events> events;
+
     @BindView(R.id.recycler_home_events)
     RecyclerView recyclerView;
 
-
+    @BindView((R.id.slider_home_events))
+    SliderView sliderView;
 
     private HomeAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -62,11 +69,8 @@ public class HomeFragment extends Fragment {
         events.add(new events("SPARK","The coup de grace event of the annual techno-management festivals. Culminating the end of festivities in form of a musical extravaganza, Spark is the spectacle to behold. From edm artists to classical artists, from rock bands to solo singers,the Spark night truly covers the art of production and provides the drive to feature the elite artists of the present generation.",R.drawable.digital));
 
 
-        layoutManager= new LinearLayoutManager(getActivity());
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(layoutManager);
-        adapter=new HomeAdapter(getActivity(),events);
-        recyclerView.setAdapter(adapter);
+        initRecyclerView();
+        initSlider();
 
 
 
@@ -107,12 +111,28 @@ public class HomeFragment extends Fragment {
         super.onAttach(context);
 
     }
+    private void initRecyclerView() {
+        layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setHasFixedSize(true);
 
-//    private void initRecyclerView() {
-//        HomeEventAdapter adapter = new HomeEventAdapter(getActivity(), mImageUrls, mTitles, mDates);
-//        cardRecyclerView.setAdapter(adapter);
-//        cardRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//    }
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new HomeAdapter(getActivity(), events);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void initSlider() {
+        SliderAdapter adapter = new SliderAdapter(getActivity());
+
+        sliderView.setSliderAdapter(adapter);
+
+        sliderView.setIndicatorAnimation(IndicatorAnimations.WORM);
+        sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+        sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
+        sliderView.setIndicatorSelectedColor(Color.WHITE);
+        sliderView.setIndicatorUnselectedColor(Color.GRAY);
+        sliderView.setScrollTimeInSec(3);
+        sliderView.startAutoCycle();
+    }
 
 
 }
