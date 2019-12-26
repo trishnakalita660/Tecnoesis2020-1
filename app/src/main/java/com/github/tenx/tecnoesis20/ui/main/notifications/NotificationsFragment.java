@@ -13,10 +13,21 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.common.ChangeEventType;
+import com.firebase.ui.database.ChangeEventListener;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.github.tenx.tecnoesis20.R;
+import com.github.tenx.tecnoesis20.data.models.NotificationBody;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
+import java.util.Timer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class NotificationsFragment extends Fragment {
 
@@ -24,7 +35,9 @@ public class NotificationsFragment extends Fragment {
     RecyclerView recyclerNotificationsList;
 
     private NotificationsViewModel mViewModel;
-    private NotificationAdapter adapter;
+
+
+    private FirebaseNotificationAdapter adapter;
 
 
     public static NotificationsFragment newInstance() {
@@ -47,17 +60,53 @@ public class NotificationsFragment extends Fragment {
     }
 
     private  void initAdapter(Context ctx){
-        adapter = new NotificationAdapter();
+
         recyclerNotificationsList.setLayoutManager(new LinearLayoutManager(ctx));
+
+
+        Query query = FirebaseDatabase.getInstance()
+                .getReference()
+                .child("notifications")
+                .limitToLast(50);
+        FirebaseRecyclerOptions<NotificationBody> options =
+                new FirebaseRecyclerOptions.Builder<NotificationBody>()
+                        .setQuery(query, NotificationBody.class)
+                        .build();
+        adapter = new FirebaseNotificationAdapter(options);
+
         recyclerNotificationsList.setAdapter(adapter);
 
     }
+
+
 
     @Override
     public void onStart() {
         super.onStart();
         initAdapter(getActivity());
-        adapter.setmList(mViewModel.getNotifications());
+        adapter.startListening();
+        adapter.getSnapshots().addChangeEventListener(new ChangeEventListener() {
+            @Override
+            public void onChildChanged(@NonNull ChangeEventType type, @NonNull DataSnapshot snapshot, int newIndex, int oldIndex) {
+                Timber.e("Changed "+adapter.getItemCount());
+            }
 
+            @Override
+            public void onDataChanged() {
+
+            }
+
+            @Override
+            public void onError(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }

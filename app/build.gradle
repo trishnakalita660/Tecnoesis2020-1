@@ -68,4 +68,9 @@ dependencies {
 
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
 
+    implementation 'com.firebaseui:firebase-ui-database:6.2.0'
+
+
 }
+
+apply plugin: 'com.google.gms.google-services'

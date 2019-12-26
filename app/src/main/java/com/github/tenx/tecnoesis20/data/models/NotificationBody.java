@@ -1,43 +1,32 @@
 package com.github.tenx.tecnoesis20.data.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class NotificationBody {
 
-    String senderName;
+
+    @SerializedName("sender")
+    String sender;
+
+    @SerializedName("title")
     String title;
+
+    @SerializedName("message")
     String message;
+
+    @SerializedName("image")
     String image;
 
+    @SerializedName("date")
+    String date;
 
-    public NotificationBody(String senderName, String title, String message, String image) {
-        this.senderName = senderName;
-        this.title = title;
-        this.message = message;
-        this.image = image;
+
+    public String getSender() {
+        return sender;
     }
 
-    public NotificationBody(String senderName, String title, String message) {
-        this.senderName = senderName;
-        this.title = title;
-        this.message = message;
-    }
-
-    public NotificationBody() {
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getSenderName() {
-        return senderName;
-    }
-
-    public void setSenderName(String senderName) {
-        this.senderName = senderName;
+    public void setSender(String sender) {
+        this.sender = sender;
     }
 
     public String getTitle() {
@@ -54,5 +43,26 @@ public class NotificationBody {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return getSender() + "\n"+getTitle()+"\n"+getDate()+"\n"+getMessage()+"\n";
     }
 }
