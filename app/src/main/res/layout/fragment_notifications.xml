@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/sky"
     tools:context=".ui.main.notifications.NotificationsFragment">
 
     <TextView
@@ -11,6 +12,10 @@
         android:layout_height="wrap_content"
         android:text="Notifications"
         android:textSize="@dimen/text_size_large"
+        android:background="@color/md_grey_50"
+        android:textColor="@color/md_black_1000"
+        android:layout_marginStart="@dimen/margin_padding_size_small"
+        android:layout_marginEnd="@dimen/margin_padding_size_small"
         android:textAlignment="center"
         android:paddingBottom="@dimen/margin_padding_size_medium"
         android:fontFamily="@font/lora_bold"
@@ -20,6 +25,9 @@
         android:id="@+id/recycler_notifications_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin_padding_size_small"
+        android:layout_marginEnd="@dimen/margin_padding_size_small"
+
         android:layout_below="@id/tv_notifications_header"
         tools:listitem="@layout/listitem_notifications_body"
         >
