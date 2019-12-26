@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.github.tenx.tecnoesis20.R;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ImageViewH
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position)
     {
-        holder.module_image.setImageResource(elist.get(position).getImage());
+        Glide.with(mContext).load("https://picsum.photos/30"+position).into(holder.module_image);
 
     }
 
