@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.github.tenx.tecnoesis20.R;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -21,9 +22,9 @@ import butterknife.ButterKnife;
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ImageViewHOlder> {
 
     private Context tcontext;
-    private List<events> hlist;
+    private ArrayList<events> hlist;
 
-    public HomeAdapter(Context tcontext, List<events> hlist) {
+    public HomeAdapter(Context tcontext, ArrayList<events> hlist) {
         this.tcontext = tcontext;
         this.hlist = hlist;
     }

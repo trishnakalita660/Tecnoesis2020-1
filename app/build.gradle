@@ -62,4 +62,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+//image Slider
+
+    implementation 'com.github.smarteist:autoimageslider:1.3.2'
+
 }
