@@ -29,11 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_below="@id/iv_home_banner_image"
-
             android:elevation="20dp"
-
             app:sliderAnimationDuration="500"
-
             app:sliderAutoCycleDirection="back_and_forth"
             app:sliderAutoCycleEnabled="true"
             app:sliderCircularHandlerEnabled="true"
@@ -47,6 +44,7 @@
             app:sliderIndicatorUnselectedColor="#FFF"
             app:sliderScrollTimeInSec="1"
             app:sliderStartAutoCycle="true"
+            android:padding="3dp"
             />
 
     </RelativeLayout>
@@ -68,6 +66,31 @@
                 android:id="@+id/recycler_home_events"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_home_sponsors"
+                android:layout_below="@id/recycler_home_events"
+                android:text="OUR SPONSORS"
+                android:layout_margin="15dp"
+                android:textSize="@dimen/text_size_large"
+                android:textColor="@color/md_white_1000"
+                android:fontFamily="@font/lora_italic"
+                android:textStyle="bold"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recycler_sponsors_home_events"
+                android:layout_below="@+id/tv_home_sponsors"
+
+                android:paddingBottom="3dp"
+                />
+
+
+
 
         </RelativeLayout>
 

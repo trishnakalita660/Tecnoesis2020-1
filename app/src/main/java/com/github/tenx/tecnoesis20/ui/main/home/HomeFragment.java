@@ -25,7 +25,6 @@ import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,16 +37,20 @@ public class HomeFragment extends Fragment {
     @BindView(R.id.iv_home_banner_image)
     ImageView imageView;
 
-ArrayList<events> events;
+    ArrayList<events> events;
+    ArrayList<SponsorsList> sponsersList;
     @BindView(R.id.recycler_home_events)
     RecyclerView recyclerView;
 
     @BindView((R.id.slider_home_events))
     SliderView sliderView;
+    @BindView(R.id.recycler_sponsors_home_events)
+    RecyclerView recyclerView2;
+
 
     private HomeAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-
+   private SponsorsAdapter adapter2;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -59,19 +62,9 @@ ArrayList<events> events;
         View parent = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, parent);
 
-        events=new ArrayList<>();
-        events.add(new events("MODULES","Tecnoesis 2020 presents before you an amazing and alluring blende of events and modules. Dive straight into the world of techies and ignite the innovative genius within you. Particapate in workshops to discover exciting new topics.",R.drawable.digital));
-
-        events.add(new events("NITS HACKS 3.0","It is all about providing the fanatics with the flavour of the emerging technical aspects of many real life applications. With the idea of binding pack of celebrated minds into the same platform, the team will be conducting Hackatons and coding competitions to bring out the best in the tech geeks!",R.drawable.digital));
-
-        events.add(new events("SPARK","The coup de grace event of the annual techno-management festivals. Culminating the end of festivities in form of a musical extravaganza, Spark is the spectacle to behold. From edm artists to classical artists, from rock bands to solo singers,the Spark night truly covers the art of production and provides the drive to feature the elite artists of the present generation.",R.drawable.digital));
-
-
         initRecyclerView();
         initSlider();
-
-
-
+        initRecyclerView2();
         return parent;
 
     }
@@ -95,11 +88,7 @@ ArrayList<events> events;
         mViewModel.getEvents().observe(this, eventsResponse -> {
 //            display result
             for (EventResponse res : eventsResponse) {
-//                mImageUrls.add(res.getImageUrl());
-//                mDates.add(res.getDate());
-//                mTitles.add(res.getName());
             }
-//            initRecyclerView();
         });
 
     }
@@ -110,6 +99,14 @@ ArrayList<events> events;
 
     }
     private void initRecyclerView() {
+
+
+        events=new ArrayList<>();
+        events.add(new events("MODULES","Tecnoesis 2020 presents before you an amazing and alluring blende of events and modules. Dive straight into the world of techies and ignite the innovative genius within you. Particapate in workshops to discover exciting new topics.",R.drawable.digital));
+        events.add(new events("NITS HACKS 3.0","It is all about providing the fanatics with the flavour of the emerging technical aspects of many real life applications. With the idea of binding pack of celebrated minds into the same platform, the team will be conducting Hackatons and coding competitions to bring out the best in the tech geeks!",R.drawable.digital));
+        events.add(new events("SPARK","The coup de grace event of the annual techno-management festivals. Culminating the end of festivities in form of a musical extravaganza, Spark is the spectacle to behold. From edm artists to classical artists, from rock bands to solo singers,the Spark night truly covers the art of production and provides the drive to feature the elite artists of the present generation.",R.drawable.digital));
+
+
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setHasFixedSize(true);
 
@@ -120,9 +117,7 @@ ArrayList<events> events;
 
     private void initSlider() {
         SliderAdapter adapter = new SliderAdapter(getActivity());
-
         sliderView.setSliderAdapter(adapter);
-
         sliderView.setIndicatorAnimation(IndicatorAnimations.WORM);
         sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
         sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
@@ -133,4 +128,18 @@ ArrayList<events> events;
     }
 
 
+    private void initRecyclerView2() {
+
+        sponsersList=new ArrayList<>();
+        sponsersList.add(new SponsorsList(R.drawable.digital));
+        sponsersList.add(new SponsorsList(R.drawable.digital));
+        sponsersList.add(new SponsorsList(R.drawable.digital));
+
+        layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        recyclerView2.setHasFixedSize(true);
+
+        recyclerView2.setLayoutManager(layoutManager);
+        adapter2 = new SponsorsAdapter(getActivity(),sponsersList);
+        recyclerView2.setAdapter(adapter2);
+    }
 }
