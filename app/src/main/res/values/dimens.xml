@@ -37,6 +37,6 @@
     <dimen name="text_size_xxlarge">45sp</dimen>
     <dimen name="text_size_xxxlarge">56sp</dimen>
     <dimen name="height_banner_image">70dp</dimen>
-
+    <dimen name="toolbar_height">45dp</dimen>
 
 </resources>

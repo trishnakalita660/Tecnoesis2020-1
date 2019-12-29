@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.module.ModuleActivity"></activity>
+        <activity android:name=".ui.event.EventActivity"></activity>
+        <activity android:name=".ui.module.ModuleActivity" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -8,14 +8,15 @@ import com.github.tenx.tecnoesis20.ui.main.events.EventsFragment;
 import com.github.tenx.tecnoesis20.ui.main.home.HomeFragment;
 import com.github.tenx.tecnoesis20.ui.main.notifications.NotificationsFragment;
 import com.github.tenx.tecnoesis20.ui.main.schedule.ScheduleFragment;
+import com.github.tenx.tecnoesis20.ui.module.ModuleActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProviders;
 
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
 //    frags
+    private MainViewModel viewModel;
+
     private HomeFragment fragHome;
     private EventsFragment fragEvents;
     private AboutFragment fragAbout;
@@ -50,13 +53,28 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 //        set callback as implemented interface
         botNav.setOnNavigationItemSelectedListener(this);
 
+//        get view model
+        viewModel = ViewModelProviders.of(MainActivity.this).get(MainViewModel.class);
 
+
+//    get modules data from database
+        initModulesData();
 
         //        initialize home fragment in main activity
         if(fragHome == null){
             fragHome = new HomeFragment();
         }
-        loadFragment(fragHome);
+
+
+//        if coming back from module activity load events fragment first
+        if(getIntent().getBooleanExtra(ModuleActivity.START_EVENTS, false)){
+            initFragment(new EventsFragment());
+            botNav.setSelectedItemId(R.id.nav_events);
+        }else{
+            initFragment(fragHome);
+        }
+
+
 
 
 //        user logger like this
@@ -68,6 +86,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
     }
 
     @Override
@@ -118,16 +142,25 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
 
         botNav.setBackgroundColor(getResources().getColor(colorID));
-        loadFragment(frag);
+        initFragment(frag);
         return true;
     }
 
 
 
-    private void loadFragment(Fragment frag){
+    private void initFragment(Fragment frag){
             fm = getSupportFragmentManager();
             fm.beginTransaction().replace(R.id.act_main_fl_container, frag).commit();
 
+    }
 
+
+    private void initModulesData(){
+        viewModel.loadModules();
+    }
+
+    public MainViewModel getViewModel() {
+//        required for child fragments
+        return viewModel;
     }
 }

@@ -5,16 +5,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.tenx.tecnoesis20.R;
+import com.github.tenx.tecnoesis20.ui.main.MainActivity;
+import com.github.tenx.tecnoesis20.ui.main.MainViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,8 +27,14 @@ public class EventsFragment extends Fragment {
     @BindView(R.id.recycler_events_list)
     RecyclerView recyclerView;
 
+    MainViewModel parentViewModel;
+
+    @BindView(R.id.progress_content)
+    ProgressBar progressContent;
+
 
     private EventsViewModel mViewModel;
+    private ModuleRecyclerAdapter adapter;
 
 
     @Override
@@ -44,14 +53,46 @@ public class EventsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(EventsViewModel.class);
         // TODO: Use the ViewModel
+        parentViewModel = ((MainActivity) getActivity()).getViewModel();
     }
 
 
-    private void initModuleRecycler(Context context){
-        ModuleRecyclerAdapter adapter = new ModuleRecyclerAdapter(context);
+    private void initModuleRecycler(Context context) {
+        adapter = new ModuleRecyclerAdapter(context);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
 
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        parentViewModel.getModules().observe(getActivity(), data -> {
+            adapter.setListModules(data);
+        });
+
+        parentViewModel.getIsModulesLoaded().observe(getActivity() , loaded -> {
+            if(loaded){
+                hideProgress();
+            }else {
+                showProgress();
+            }
+        });
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+    }
+
+
+    private void showProgress(){
+        progressContent.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgress(){
+        progressContent.setVisibility(View.GONE);
+    }
 }

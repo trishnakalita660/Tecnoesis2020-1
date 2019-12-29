@@ -1,13 +1,10 @@
 package com.github.tenx.tecnoesis20.data.models;
 
-import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.database.PropertyName;
 
 import java.util.List;
 
-
-@IgnoreExtraProperties
-public class ModuleBody {
+public class EventBody {
 
     @PropertyName("name")
     String name;
@@ -15,14 +12,20 @@ public class ModuleBody {
     @PropertyName("description")
     String description;
 
+    @PropertyName("rules")
+    List<String> rules;
+
     @PropertyName("image")
     String image;
 
-    @PropertyName("events")
-    List<EventBody> events;
+    @PropertyName("date")
+    String date;
+
+    @PropertyName("registerLink")
+    String registerLink;
 
 
-    public ModuleBody() {
+    public EventBody() {
     }
 
     public String getName() {
@@ -41,6 +44,15 @@ public class ModuleBody {
         this.description = description;
     }
 
+
+    public List<String> getRules() {
+        return rules;
+    }
+
+    public void setRules(List<String> rules) {
+        this.rules = rules;
+    }
+
     public String getImage() {
         return image;
     }
@@ -49,20 +61,19 @@ public class ModuleBody {
         this.image = image;
     }
 
-    public List<EventBody> getEvents() {
-        return events;
+    public String getDate() {
+        return date;
     }
 
-    public void setEvents(List<EventBody> events) {
-
-        this.events = events;
+    public void setDate(String date) {
+        this.date = date;
     }
 
+    public String getRegisterLink() {
+        return registerLink;
+    }
 
-
-
-    @Override
-    public String toString() {
-        return name + "\n" + description + "\n";
+    public void setRegisterLink(String registerLink) {
+        this.registerLink = registerLink;
     }
 }

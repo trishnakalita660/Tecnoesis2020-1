@@ -56,7 +56,7 @@ public class ModuleRecyclerAdapter extends RecyclerView.Adapter<ModuleRecyclerAd
 
     public ModuleRecyclerAdapter(Context context) {
         this.context = context;
-        listModules = Utils.getModules();
+        listModules = new ArrayList<>();
     }
 
     @NonNull
@@ -89,5 +89,11 @@ public class ModuleRecyclerAdapter extends RecyclerView.Adapter<ModuleRecyclerAd
         Intent intent = new Intent(context , ModuleActivity.class);
         intent.putExtra(Config.INITIAL_PAGE, position);
         context.startActivity(intent);
+    }
+
+
+    public void setListModules(List<ModuleBody> listModules) {
+        this.listModules = listModules;
+        notifyDataSetChanged();
     }
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import com.bumptech.glide.Glide;
 import com.github.tenx.tecnoesis20.R;
+import com.github.tenx.tecnoesis20.data.models.EventBody;
 import com.github.tenx.tecnoesis20.data.models.ModuleBody;
 
 import java.util.List;
@@ -27,12 +29,14 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
 
 
-    private List<ModuleBody.EventBody> listEvents;
+    private List<EventBody> listEvents;
     private Context context;
     private ModuleBody moduleBody;
+    private EventClickHandler clickHandler;
+
 
     public EventAdapter(Context context, ModuleBody moduleBody) {
-        this.listEvents = moduleBody.getEventList();
+        this.listEvents = moduleBody.getEvents();
         this.context = context;
         this.moduleBody = moduleBody;
     }
@@ -53,6 +57,10 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     }
 
+    public void setClickHandler(EventClickHandler clickHandler) {
+        this.clickHandler = clickHandler;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
@@ -66,13 +74,17 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             headerHolder.tvModuleName.setText(moduleBody.getName());
             Glide.with(context).load(moduleBody.getImage()).into(headerHolder.ivModuleImage);
         }else {
-            ModuleBody.EventBody current = listEvents.get(position-1);
+           EventBody current = listEvents.get(position-1);
             CustomViewHolder itemholder =  (CustomViewHolder) holder;
 
             itemholder.tvEventDateLoc.setText(current.getDate());
             itemholder.tvEventDesc.setText(current.getDescription());
             itemholder.tvEventName.setText(current.getName());
             Glide.with(context).load(current.getImage()).into(itemholder.ivEventImage);
+
+            ((CustomViewHolder) holder).llParent.setOnClickListener(v -> {
+                clickHandler.onEventClick(position-1);
+            });
         }
 
     }
@@ -102,6 +114,9 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView tvEventDateLoc;
         @BindView(R.id.tv_event_desc)
         TextView tvEventDesc;
+
+        @BindView(R.id.llParent)
+        LinearLayout llParent;
 
 
 

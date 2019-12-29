@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,10 +22,12 @@ import com.bumptech.glide.Glide;
 import com.github.tenx.tecnoesis20.R;
 import com.github.tenx.tecnoesis20.Utils;
 import com.github.tenx.tecnoesis20.data.models.ModuleBody;
+import com.github.tenx.tecnoesis20.ui.MyApplication;
 import com.github.tenx.tecnoesis20.ui.module.ModuleActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class ModuleFragment extends Fragment {
 
@@ -36,7 +39,9 @@ public class ModuleFragment extends Fragment {
     private ModuleViewModel mViewModel;
 
     private EventAdapter adapter;
-
+    private ModuleActivity parentActivity;
+    private MyApplication application;
+    private int currentPage;
 
     public static ModuleFragment newInstance() {
         return new ModuleFragment();
@@ -47,20 +52,16 @@ public class ModuleFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_module, container, false);
         ButterKnife.bind(this, v);
-
+        application = (MyApplication) getActivity().getApplication();
 
         try {
-            Bundle args = getArguments();
-            int index = args.getInt(ModuleActivity.PAGE_INDEX_KEY);
-
-            ModuleBody testdata = Utils.getModules().get(index);
-
-            initData(testdata, getActivity());
-
-
-        } catch (NullPointerException e) {
-            throw new Error("Did not receive page index in bundle!");
+            currentPage = getArguments().getInt(ModuleActivity.PAGE_INDEX_KEY);
+        }catch (NullPointerException e){
+            currentPage = 0;
         }
+
+
+
 
 
         return v;
@@ -70,18 +71,32 @@ public class ModuleFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(ModuleViewModel.class);
+        parentActivity = (ModuleActivity) getActivity();
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        Timber.d("current Page : "+ currentPage);
+        Timber.d("size : "+application.getModuleList().size());
+        ModuleBody data = application.getModuleList().get(currentPage);
+        initData( data, getActivity());
+
+
+    }
 
     private void initData(ModuleBody data, Context context) {
         adapter = new EventAdapter(context , data);
         recyclerModuleEventList.setLayoutManager(new LinearLayoutManager(context));
-
+        adapter.setClickHandler(parentActivity);
         recyclerModuleEventList.setNestedScrollingEnabled(false);
         recyclerModuleEventList.setAdapter(adapter);
 
     }
+
+
+
 
 
 }

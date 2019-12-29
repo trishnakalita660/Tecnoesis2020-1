@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sky"
-    tools:context=".ui.module.ModuleActivity">
+   >
+
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/module_appbar"
+        android:id="@+id/event_appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.appcompat.widget.Toolbar
@@ -18,23 +18,24 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/module_tablayout"
+        android:id="@+id/event_tablayout"
         android:layout_width="match_parent"
         android:layout_height="6dp"
-        android:layout_below="@id/module_appbar"
+        android:layout_below="@id/event_appbar"
         android:background="@color/colorPrimary"
         >
 
     </com.google.android.material.tabs.TabLayout>
 
+
+
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/vp_modules_fragment_pager"
-        android:layout_width="match_parent"
+        android:id="@+id/event_pager"
+        android:layout_below="@id/event_tablayout"
         android:layout_marginStart="@dimen/margin_padding_size_small"
-        android:layout_below="@+id/module_tablayout"
         android:layout_marginEnd="@dimen/margin_padding_size_small"
-        android:layout_height="match_parent"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     </androidx.viewpager.widget.ViewPager>
 

@@ -60,8 +60,10 @@ public class NotificationsFragment extends Fragment {
     }
 
     private  void initAdapter(Context ctx){
-
-        recyclerNotificationsList.setLayoutManager(new LinearLayoutManager(ctx));
+//        as latest notification is at last
+        LinearLayoutManager llman = new LinearLayoutManager(ctx);
+        llman.setReverseLayout(true);
+        recyclerNotificationsList.setLayoutManager(llman);
 
 
         Query query = FirebaseDatabase.getInstance()
@@ -73,22 +75,10 @@ public class NotificationsFragment extends Fragment {
                         .setQuery(query, NotificationBody.class)
                         .build();
         adapter = new FirebaseNotificationAdapter(options);
-
-        recyclerNotificationsList.setAdapter(adapter);
-
-    }
-
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        initAdapter(getActivity());
-        adapter.startListening();
         adapter.getSnapshots().addChangeEventListener(new ChangeEventListener() {
             @Override
             public void onChildChanged(@NonNull ChangeEventType type, @NonNull DataSnapshot snapshot, int newIndex, int oldIndex) {
-                Timber.e("Changed "+adapter.getItemCount());
+                Timber.d("Changed now");
             }
 
             @Override
@@ -101,6 +91,18 @@ public class NotificationsFragment extends Fragment {
 
             }
         });
+        recyclerNotificationsList.setAdapter(adapter);
+
+    }
+
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        initAdapter(getActivity());
+        adapter.startListening();
+
 
     }
 
