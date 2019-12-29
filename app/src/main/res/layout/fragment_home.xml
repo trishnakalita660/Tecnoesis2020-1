@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/sky"
-    android:tint="#6F0C0000"
-    android:scrollbars="vertical"
-    tools:context=".ui.main.home.HomeFragment"
-    >
-
-
-    <RelativeLayout
-        android:id="@+id/rel1"
+    android:layout_height="match_parent">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/sky"
+        android:tint="#6F0C0000"
+        android:scrollbars="vertical"
+        android:orientation="vertical"
+        tools:context=".ui.main.home.HomeFragment"
+        >
+
+
+
 
 
 
@@ -23,9 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:elevation="20dp"
-
             app:sliderAnimationDuration="500"
-
             app:sliderAutoCycleDirection="back_and_forth"
             app:sliderAutoCycleEnabled="true"
             app:sliderCircularHandlerEnabled="true"
@@ -39,34 +38,49 @@
             app:sliderIndicatorUnselectedColor="#FFF"
             app:sliderScrollTimeInSec="1"
             app:sliderStartAutoCycle="true"
+            android:padding="3dp"
             />
 
-    </RelativeLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/rel1">
-
-
-
-        <RelativeLayout
-            android:id="@+id/relinside"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_home_sponsors"
+            android:layout_below="@id/recycler_home_events"
+            android:text="OUR SPONSORS"
+            android:layout_margin="15dp"
+            android:textSize="@dimen/text_size_large"
+            android:textColor="@color/md_white_1000"
+            android:fontFamily="@font/lora_bold_italic"
+            android:textStyle="bold"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler_sponsors_home_events"
+            android:layout_below="@+id/tv_home_sponsors"
+            android:paddingBottom="3dp"
+            tools:itemCount="2"
+
+            tools:listitem="@layout/home_sponsors_item"
+            />
+
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_home_events"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </RelativeLayout>
-
-    </ScrollView>
-</RelativeLayout>
+                android:layout_height="match_parent"
+                tools:listitem="@layout/listitem_home_events"
+                android:nestedScrollingEnabled="false"
+                />
 
 
+
+        </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>
 
 
 
