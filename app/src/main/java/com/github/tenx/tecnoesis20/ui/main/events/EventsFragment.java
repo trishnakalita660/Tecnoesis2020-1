@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.github.tenx.tecnoesis20.R;
 import com.github.tenx.tecnoesis20.ui.main.MainActivity;
 import com.github.tenx.tecnoesis20.ui.main.MainViewModel;
+import com.victor.loading.newton.NewtonCradleLoading;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,7 +31,7 @@ public class EventsFragment extends Fragment {
     MainViewModel parentViewModel;
 
     @BindView(R.id.progress_content)
-    ProgressBar progressContent;
+    NewtonCradleLoading progressContent;
 
 
     private EventsViewModel mViewModel;
@@ -89,10 +90,12 @@ public class EventsFragment extends Fragment {
 
 
     private void showProgress(){
+        progressContent.start();
         progressContent.setVisibility(View.VISIBLE);
     }
 
     private void hideProgress(){
+        progressContent.stop();
         progressContent.setVisibility(View.GONE);
     }
 }

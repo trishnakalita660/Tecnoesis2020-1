@@ -22,8 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-
-import java.util.Timer;
+import com.victor.loading.newton.NewtonCradleLoading;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +32,8 @@ public class NotificationsFragment extends Fragment {
 
     @BindView(R.id.recycler_notifications_list)
     RecyclerView recyclerNotificationsList;
+    @BindView(R.id.progress)
+    NewtonCradleLoading progress;
 
     private NotificationsViewModel mViewModel;
 
@@ -47,9 +48,9 @@ public class NotificationsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View v =  inflater.inflate(R.layout.fragment_notifications, container, false);
-        ButterKnife.bind(this , v);
-        return v ;
+        View v = inflater.inflate(R.layout.fragment_notifications, container, false);
+        ButterKnife.bind(this, v);
+        return v;
     }
 
     @Override
@@ -59,7 +60,7 @@ public class NotificationsFragment extends Fragment {
         // TODO: Use the ViewModel
     }
 
-    private  void initAdapter(Context ctx){
+    private void initAdapter(Context ctx) {
 //        as latest notification is at last
         LinearLayoutManager llman = new LinearLayoutManager(ctx);
         llman.setReverseLayout(true);
@@ -78,6 +79,7 @@ public class NotificationsFragment extends Fragment {
         adapter.getSnapshots().addChangeEventListener(new ChangeEventListener() {
             @Override
             public void onChildChanged(@NonNull ChangeEventType type, @NonNull DataSnapshot snapshot, int newIndex, int oldIndex) {
+                hideProgress();
                 Timber.d("Changed now");
             }
 
@@ -93,14 +95,15 @@ public class NotificationsFragment extends Fragment {
         });
         recyclerNotificationsList.setAdapter(adapter);
 
-    }
 
+    }
 
 
     @Override
     public void onStart() {
         super.onStart();
         initAdapter(getActivity());
+        showProgress();
         adapter.startListening();
 
 
@@ -110,5 +113,16 @@ public class NotificationsFragment extends Fragment {
     public void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+
+
+    private void showProgress(){
+        progress.start();
+        progress.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgress(){
+        progress.stop();
+        progress.setVisibility(View.GONE);
     }
 }

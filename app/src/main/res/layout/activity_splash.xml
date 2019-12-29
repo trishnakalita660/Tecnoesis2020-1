@@ -14,7 +14,7 @@
         android:background="@color/design_default_color_primary"
         android:scaleType="centerCrop"
         android:tint="#6F0C0000"
-        android:src="@drawable/img_splash_temp"
+        android:src="@drawable/sky"
         />
 
     <TextView
@@ -40,11 +40,13 @@
         app:backgroundTint="@color/nav_home"
         />
 
-    <ProgressBar
+    <com.victor.loading.newton.NewtonCradleLoading
         android:id="@+id/act_splash_progress"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
         android:visibility="invisible"
+
+
         android:layout_above="@id/act_splash_mbtn_next"
         android:layout_centerHorizontal="true"
 

@@ -16,20 +16,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/iv_home_banner_image"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_banner_image"
-            android:padding="@dimen/margin_padding_size_small"
-            android:scaleType="fitXY"
-            android:src="@drawable/tecnoesis" />
+
 
         <com.smarteist.autoimageslider.SliderView
             android:id="@+id/slider_home_events"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_below="@id/iv_home_banner_image"
-
             android:elevation="20dp"
 
             app:sliderAnimationDuration="500"

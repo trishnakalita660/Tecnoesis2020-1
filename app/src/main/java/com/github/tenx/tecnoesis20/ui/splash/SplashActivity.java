@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import com.github.tenx.tecnoesis20.R;
 import com.github.tenx.tecnoesis20.ui.main.MainActivity;
 import com.google.android.material.button.MaterialButton;
+import com.victor.loading.newton.NewtonCradleLoading;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,7 +22,7 @@ public class SplashActivity extends AppCompatActivity {
     MaterialButton mbtnNext;
 
     @BindView(R.id.act_splash_progress)
-    ProgressBar progress;
+    NewtonCradleLoading progress;
 
 
 
@@ -46,10 +47,14 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void showProgress(){
+        progress.start();
         progress.setVisibility(View.VISIBLE);
+        mbtnNext.setEnabled(false);
     }
 
-    public void hideProgress(){
+    public void hideProgress()
+    {   mbtnNext.setEnabled(true);
+        progress.stop();
         progress.setVisibility(View.INVISIBLE);
     }
 }

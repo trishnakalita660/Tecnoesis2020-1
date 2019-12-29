@@ -35,8 +35,7 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel mViewModel;
 
-    @BindView(R.id.iv_home_banner_image)
-    ImageView imageView;
+
 
 
 ArrayList<events> events;

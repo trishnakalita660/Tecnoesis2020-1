@@ -70,6 +70,9 @@ dependencies {
 
     implementation 'com.firebaseui:firebase-ui-database:6.2.0'
 
+    implementation 'com.victor:lib:1.0.4'
+
+
 
 }
 

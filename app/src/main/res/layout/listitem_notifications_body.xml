@@ -37,7 +37,7 @@
                 android:id="@+id/tv_notificationitem_sender_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/md_green_300"
+                android:textColor="@color/md_purple_600"
                 android:textSize="@dimen/text_size_medium"
                 android:text="Jhonny Dep"
                 android:textStyle="bold"

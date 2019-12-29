@@ -66,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/module_btn_text"
                 android:layout_gravity="end"
+                android:backgroundTint="@color/colorPrimary"
                 android:layout_marginRight="@dimen/margin_padding_size_medium"
                 android:layout_marginLeft="@dimen/margin_padding_size_medium"
                 />
