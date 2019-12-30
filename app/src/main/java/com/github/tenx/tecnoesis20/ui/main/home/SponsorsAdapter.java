@@ -47,11 +47,6 @@ public class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.ImageV
     }
 
 
-
-
-
-
-
     public  class ImageViewHOlder extends RecyclerView.ViewHolder{
 
         @BindView(R.id.iv_sponsors_home_events)
